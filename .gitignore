@@ -1,0 +1,31 @@
+# Virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# RCAEval dataset
+data/re2_cases/
+data/*.parquet
+
+# Generated datasets/results
+data/rca_training_dataset.csv
+data/rca_test_results.csv
+data/fault_test_results.csv
+data/api_evaluation_results.csv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Environment/secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
