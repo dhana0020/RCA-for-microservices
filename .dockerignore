@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.git/
+.github/
+data/re2_cases/
+data/*.parquet
+data/*.csv
+mlruns/
+mlflow.db
+frontend/
+monitoring/
+services/

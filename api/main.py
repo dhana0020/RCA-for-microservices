@@ -1,9 +1,11 @@
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import pandas as pd
 import joblib
+from fastapi.middleware.cors import CORSMiddleware
+from prometheus_fastapi_instrumentator import Instrumentator
 
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 
 # ============================================================
 # 1. FASTAPI APP
@@ -14,6 +16,19 @@ app = FastAPI(
     description="AI-based Root Cause Analysis for Microservices",
     version="1.0.0"
 )
+FastAPIInstrumentor.instrument_app(app)
+
+# CORS for React frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Prometheus monitoring
+Instrumentator().instrument(app).expose(app)
 
 
 # ============================================================
@@ -21,7 +36,7 @@ app = FastAPI(
 # ============================================================
 
 RCA_MODEL_PATH = "models/xgboost_rca_model.pkl"
-FAULT_MODEL_PATH = "models/xgboost_fault_model.pkl"
+FAULT_MODEL_PATH = "models/xgboost_fault_model_v2.pkl"
 
 
 try:
@@ -74,7 +89,7 @@ class ServiceFeatures(BaseModel):
     error_ratio: float = 0.0
 
     # API uses "_" because "-" is not valid in Python variable names.
-    # We convert these names to the original training names later.
+    # These are converted to the original training names later.
 
     latency_50_change: float = 0.0
     latency_50_ratio: float = 0.0
@@ -181,7 +196,6 @@ def predict(request: PredictionRequest):
 
 
         # ----------------------------------------------------
-        # IMPORTANT:
         # Match API feature names with training feature names
         # ----------------------------------------------------
 
@@ -213,7 +227,7 @@ def predict(request: PredictionRequest):
         # ROOT-CAUSE SERVICE PREDICTION
         # ====================================================
 
-        # Select exactly the features used during training
+        # Check that all required RCA features exist
 
         missing_rca_features = [
             feature
@@ -231,6 +245,8 @@ def predict(request: PredictionRequest):
                 }
             )
 
+
+        # Select RCA features
 
         X_rca = df[
             rca_features

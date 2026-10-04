@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+header {
+  background: #1f2937;
+  color: white;
+  padding: 25px 40px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin-bottom: 0;
+  color: #d1d5db;
+}
+
+main {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+select,
+input {
+  width: 100%;
+  padding: 9px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #9ca3af;
+}
+
+.result {
+  border-left: 5px solid #2563eb;
+}
+
+.result-box {
+  padding: 15px;
+  margin: 10px 0;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.result-box h3 {
+  margin: 0 0 5px;
+}
+
+.result-box strong {
+  font-size: 20px;
+}

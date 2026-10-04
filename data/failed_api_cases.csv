@@ -1,0 +1,7 @@
+case,application,actual_root_cause,predicted_root_cause,actual_fault,predicted_fault,root_cause_confidence,fault_confidence,correct
+re2ob_currencyservice_delay_1,RE2-OB,currencyservice,checkoutservice,delay,loss,0.0007,0.6802,False
+re2ob_currencyservice_loss_3,RE2-OB,currencyservice,checkoutservice,loss,loss,0.0005,0.8524,False
+re2ob_emailservice_delay_1,RE2-OB,emailservice,checkoutservice,delay,loss,0.0016,0.4316,False
+re2ob_emailservice_delay_2,RE2-OB,emailservice,checkoutservice,delay,loss,0.0007,0.4394,False
+re2ob_emailservice_delay_3,RE2-OB,emailservice,checkoutservice,delay,loss,0.0011,0.5641,False
+re2ss_payment_delay_3,RE2-SS,payment,user,delay,loss,0.002,0.7342,False

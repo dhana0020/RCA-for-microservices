@@ -29,3 +29,6 @@ data/api_evaluation_results.csv
 # OS files
 .DS_Store
 Thumbs.db
+
+mlflow.db
+mlruns/
