@@ -89,7 +89,7 @@ function App() {
       console.log("Sending services:", services);
 
       const response = await fetch(
-        "http://localhost:8000/predict",
+        "https://ai-rca-api-dhana.onrender.com",
         {
           method: "POST",
           headers: {
