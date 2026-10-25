@@ -131,10 +131,6 @@ function App() {
 
       <header>
         <h1>AI Root Cause Analysis</h1>
-
-        <p>
-          Microservices Incident Diagnosis Dashboard
-        </p>
       </header>
 
       <main>
